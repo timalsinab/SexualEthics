@@ -1,14 +1,15 @@
 import React from 'react';
 
-const Card = ({ children, className }) => {
-  return (
-    <div className={`shadow-lg rounded-lg overflow-hidden ${className}`}>
-      {children}
-    </div>
-  );
-};
+export const Card = ({ children, className }) => (
+  <div className={`bg-white rounded-lg shadow-md p-4 ${className}`}>{children}</div>
+);
 
-const CardHeader = ({ children }) => <div className="bg-gray-100 p-4">{children}</div>;
-const CardContent = ({ children }) => <div className="p-4">{children}</div>;
+export const CardHeader = ({ children }) => (
+  <div className="border-b pb-2 mb-2">{children}</div>
+);
 
-export { Card, CardHeader, CardContent };
+export const CardTitle = ({ children, className }) => (
+  <h3 className={`text-lg font-semibold ${className}`}>{children}</h3>
+);
+
+export const CardContent = ({ children }) => <div>{children}</div>;

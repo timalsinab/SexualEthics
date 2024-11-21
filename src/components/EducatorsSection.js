@@ -1,6 +1,5 @@
-import React from 'react';
-import { Button } from './ui/button';
-import { Card, CardContent, CardHeader, CardTitle } from './ui/card';
+import { Card, CardHeader, CardTitle, CardContent } from './ui/card';
+import {Button} from './ui/button';
 import { FileText, Book, Activity, AlertCircle } from 'lucide-react';
 
 const EducatorsSection = ({ onBack }) => {
@@ -12,8 +11,8 @@ const EducatorsSection = ({ onBack }) => {
       items: [
         "Understanding Power Dynamics in Relationships",
         "Contemporary Perspectives on Consent",
-        "Teaching Ethics: A Practical Guide"
-      ]
+        "Teaching Ethicsx: A Practical Guide",
+      ],
     },
     {
       title: "Case Studies",
@@ -22,33 +21,29 @@ const EducatorsSection = ({ onBack }) => {
       items: [
         "Navigating Digital Boundaries",
         "Understanding Consent in Practice",
-        "Addressing Power Imbalances"
-      ]
+        "Addressing Power Imbalances",
+      ],
     },
     {
       title: "Classroom Activities",
       icon: <Activity className="h-6 w-6" />,
       description: "Interactive exercises for student engagement.",
       items: [
-        "Group Discussion Templates",
-        "Role-Play Scenarios",
-        "Reflection Exercises"
-      ]
-    }
+        "Group Discussion Templates: Foster critical thinking through guided questions.",
+        "Role-Play Scenarios: Simulate real-world ethical dilemmas for students to solve.",
+        "Reflection Exercises: Encourage students to analyze their beliefs and behaviors.",
+      ],
+    },
   ];
 
   return (
     <div>
-      <Button 
-        variant="outline" 
-        onClick={onBack}
-        className="mb-6"
-      >
+      <Button variant="outline" onClick={onBack} className="mb-6">
         Back to Home
       </Button>
-      
+
       <h2 className="text-2xl font-bold mb-6">Resources for Educators</h2>
-      
+
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
         {resources.map((resource, index) => (
           <Card key={index}>

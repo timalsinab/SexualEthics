@@ -1,6 +1,5 @@
-import React from 'react';
+import { Card, CardHeader, CardTitle, CardContent } from './ui/card';
 import { Button } from './ui/button';
-import { Card, CardContent, CardHeader, CardTitle } from './ui/card';
 import { Play, Activity, Users, AlertCircle } from 'lucide-react';
 
 const StudentsSection = ({ onBack }) => {
@@ -8,47 +7,43 @@ const StudentsSection = ({ onBack }) => {
     {
       title: "Video Lessons",
       icon: <Play className="h-6 w-6" />,
-      description: "Watch friendly, informative videos about respect and relationships.",
+      description: "Learn through friendly and informative videos about respect and relationships.",
       topics: [
-        "Understanding Personal Boundaries",
-        "Being a Good Friend",
-        "Making Ethical Choices"
-      ]
+        "Respecting Personal Boundaries",
+        "Understanding Consent and Communication",
+        "How to Be a Good Friend",
+      ],
     },
     {
       title: "Interactive Scenarios",
       icon: <Activity className="h-6 w-6" />,
       description: "Practice making good decisions in different situations.",
       topics: [
-        "Respecting Others' Space",
-        "Standing Up for Friends",
-        "Digital Communication"
-      ]
+        "Standing Up for Friends in Difficult Situations",
+        "Respecting Differences in Opinions",
+        "Using Technology Responsibly in Relationships",
+      ],
     },
     {
-      title: "Learn About Respect",
+      title: "Relationship Skills",
       icon: <Users className="h-6 w-6" />,
-      description: "Discover how to build healthy relationships with others.",
+      description: "Understand and develop essential skills for maintaining positive relationships.",
       topics: [
-        "What is Respect?",
-        "Communication Skills",
-        "Being a Good Friend"
-      ]
-    }
+        "Effective Communication",
+        "Conflict Resolution",
+        "Building Trust and Respect",
+      ],
+    },
   ];
 
   return (
     <div>
-      <Button 
-        variant="outline" 
-        onClick={onBack}
-        className="mb-6"
-      >
+      <Button variant="outline" onClick={onBack} className="mb-6">
         Back to Home
       </Button>
-      
+
       <h2 className="text-2xl font-bold mb-6">Resources for Students</h2>
-      
+
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
         {resources.map((resource, index) => (
           <Card key={index}>

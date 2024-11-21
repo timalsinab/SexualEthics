@@ -1,11 +1,11 @@
 import React from 'react';
-import ReactDOM from 'react-dom/client';
+import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
+import EducationalHub from './App'; // Ensure this path is correct
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
+ReactDOM.render(
   <React.StrictMode>
-    <App />
-  </React.StrictMode>
+    <EducationalHub />
+  </React.StrictMode>,
+  document.getElementById('root') // Ensure your HTML has an element with id="root"
 );
