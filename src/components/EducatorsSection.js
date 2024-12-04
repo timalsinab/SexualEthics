@@ -38,7 +38,7 @@ const EducatorsSection = ({ onBack }) => {
 
   return (
     <div>
-      <Button variant="outline" onClick={onBack} className="mb-6">
+      <Button variant="outline" onClick={onBack} className="mb-6 text-black">
         Back to Home
       </Button>
 
