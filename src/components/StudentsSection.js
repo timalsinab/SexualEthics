@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Card, CardHeader, CardTitle, CardContent } from './ui/card';
-import { Button } from './ui/button';
 import { Play, Activity, Users } from 'lucide-react';
 
 const StudentsSection = ({ onBack }) => {
@@ -66,22 +65,47 @@ const StudentsSection = ({ onBack }) => {
   ];
 
   return (
-    <div>
+    <div className="p-6 bg-gray-50 min-h-screen">
       {/* Back Button */}
-      <Button
-        variant="outline"
-        onClick={onBack}
-        className="mb-6 border-gray-300 text-black hover:bg-gray-100"
-      >
-        Back
-      </Button>
+      <div className="mb-6">
+        <button
+          onClick={onBack}
+          style={{
+            border: '1px solid #ccc',
+            backgroundColor: '#f9f9f9',
+            color: '#333',
+            padding: '10px 20px',
+            borderRadius: '5px',
+            cursor: 'pointer',
+            display: 'flex',
+            alignItems: 'center',
+            gap: '8px',
+          }}
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="h-5 w-5"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="2"
+              d="M15 19l-7-7 7-7"
+            />
+          </svg>
+          Back
+        </button>
+      </div>
 
-      <h2 className="text-2xl font-bold mb-6">Resources for Students</h2>
+      <h2 className="text-2xl font-bold mb-6 text-gray-800">Resources for Students</h2>
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
         {resources.map((resource, index) => (
           <Card key={index}>
             <CardHeader>
-              <CardTitle className="flex items-center gap-2">
+              <CardTitle className="flex items-center gap-2 text-gray-800">
                 {resource.icon}
                 {resource.title}
               </CardTitle>
