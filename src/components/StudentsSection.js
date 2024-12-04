@@ -1,6 +1,8 @@
+import React from 'react';
+import { Link } from 'react-router-dom';
 import { Card, CardHeader, CardTitle, CardContent } from './ui/card';
 import { Button } from './ui/button';
-import { Play, Activity, Users, AlertCircle } from 'lucide-react';
+import { Play, Activity, Users } from 'lucide-react';
 
 const StudentsSection = ({ onBack }) => {
   const resources = [
@@ -9,9 +11,18 @@ const StudentsSection = ({ onBack }) => {
       icon: <Play className="h-6 w-6" />,
       description: "Learn through friendly and informative videos about respect and relationships.",
       topics: [
-        "Respecting Personal Boundaries",
-        "Understanding Consent and Communication",
-        "How to Be a Good Friend",
+        {
+          text: "Respecting Personal Boundaries",
+          link: "/students/video-lessons",
+        },
+        {
+          text: "Understanding Consent and Communication",
+          link: "/students/video-lessons",
+        },
+        {
+          text: "How to Be a Good Friend",
+          link: "/students/video-lessons",
+        },
       ],
     },
     {
@@ -19,9 +30,18 @@ const StudentsSection = ({ onBack }) => {
       icon: <Activity className="h-6 w-6" />,
       description: "Practice making good decisions in different situations.",
       topics: [
-        "Standing Up for Friends in Difficult Situations",
-        "Respecting Differences in Opinions",
-        "Using Technology Responsibly in Relationships",
+        {
+          text: "Standing Up for Friends in Difficult Situations",
+          link: "/students/interactive-scenarios",
+        },
+        {
+          text: "Respecting Differences in Opinions",
+          link: "/students/interactive-scenarios/respecting-differences",
+        },
+        {
+          text: "Using Technology Responsibly in Relationships",
+          link: "/students/interactive-scenarios/using-technology-responsibly",
+        },
       ],
     },
     {
@@ -29,21 +49,34 @@ const StudentsSection = ({ onBack }) => {
       icon: <Users className="h-6 w-6" />,
       description: "Understand and develop essential skills for maintaining positive relationships.",
       topics: [
-        "Effective Communication",
-        "Conflict Resolution",
-        "Building Trust and Respect",
+        {
+          text: "Effective Communication",
+          link: "/students/relationship-skills",
+        },
+        {
+          text: "Conflict Resolution",
+          link: "/students/relationship-skills",
+        },
+        {
+          text: "Building Trust and Respect",
+          link: "/students/relationship-skills",
+        },
       ],
     },
   ];
 
   return (
     <div>
-      <Button variant="outline" onClick={onBack} className="mb-6">
-        Back to Home
+      {/* Back Button */}
+      <Button
+        variant="outline"
+        onClick={onBack}
+        className="mb-6 border-gray-300 text-black hover:bg-gray-100"
+      >
+        Back
       </Button>
 
       <h2 className="text-2xl font-bold mb-6">Resources for Students</h2>
-
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
         {resources.map((resource, index) => (
           <Card key={index}>
@@ -54,12 +87,13 @@ const StudentsSection = ({ onBack }) => {
               </CardTitle>
             </CardHeader>
             <CardContent>
-              <p className="mb-4 text-gray-600">{resource.description}</p>
-              <ul className="space-y-2">
+              <p className="text-gray-600 mb-4">{resource.description}</p>
+              <ul className="list-disc ml-5">
                 {resource.topics.map((topic, idx) => (
-                  <li key={idx} className="flex items-center gap-2">
-                    <AlertCircle className="h-4 w-4 text-blue-500" />
-                    {topic}
+                  <li key={idx}>
+                    <Link to={topic.link} className="text-blue-600 hover:underline">
+                      {topic.text}
+                    </Link>
                   </li>
                 ))}
               </ul>
