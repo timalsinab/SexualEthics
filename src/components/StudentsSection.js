@@ -1,13 +1,16 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { Card, CardHeader, CardTitle, CardContent } from './ui/card';
-import { Play, Activity, Users } from 'lucide-react';
+import { Play, Activity, Users, AlertCircle } from 'lucide-react';
+import { Button } from './ui/button';
 
-const StudentsSection = ({ onBack }) => {
+const StudentsSection = () => {
+  const navigate = useNavigate(); // Use navigate for routing
+
   const resources = [
     {
       title: "Video Lessons",
-      icon: <Play className="h-6 w-6" />,
+      icon: <Play className="h-6 w-6 text-purple-600" />,
       description: "Learn through friendly and informative videos about respect and relationships.",
       topics: [
         {
@@ -26,7 +29,7 @@ const StudentsSection = ({ onBack }) => {
     },
     {
       title: "Interactive Scenarios",
-      icon: <Activity className="h-6 w-6" />,
+      icon: <Activity className="h-6 w-6 text-green-600" />,
       description: "Practice making good decisions in different situations.",
       topics: [
         {
@@ -45,7 +48,7 @@ const StudentsSection = ({ onBack }) => {
     },
     {
       title: "Relationship Skills",
-      icon: <Users className="h-6 w-6" />,
+      icon: <Users className="h-6 w-6 text-blue-600" />,
       description: "Understand and develop essential skills for maintaining positive relationships.",
       topics: [
         {
@@ -65,57 +68,39 @@ const StudentsSection = ({ onBack }) => {
   ];
 
   return (
-    <div className="p-6 bg-gray-50 min-h-screen">
+    <div>
       {/* Back Button */}
-      <div className="mb-6">
-        <button
-          onClick={onBack}
-          style={{
-            border: '1px solid #ccc',
-            backgroundColor: '#f9f9f9',
-            color: '#333',
-            padding: '10px 20px',
-            borderRadius: '5px',
-            cursor: 'pointer',
-            display: 'flex',
-            alignItems: 'center',
-            gap: '8px',
-          }}
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            className="h-5 w-5"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2"
-              d="M15 19l-7-7 7-7"
-            />
-          </svg>
-          Back
-        </button>
-      </div>
+      <Button
+        variant="outline"
+        onClick={() => navigate('/')}
+        className="mb-6 px-4 py-2 border border-gray-300 text-gray-800 bg-white hover:text-white hover:bg-gray-800 rounded-lg transition-all"
+      >
+        Back to Home
+      </Button>
 
-      <h2 className="text-2xl font-bold mb-6 text-gray-800">Resources for Students</h2>
+      {/* Page Title */}
+      <h2 className="text-3xl font-bold mb-6 text-gray-800">Resources for Students</h2>
+
+      {/* Resources Section */}
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
         {resources.map((resource, index) => (
-          <Card key={index}>
+          <Card key={index} className="hover:shadow-lg transition-shadow">
             <CardHeader>
-              <CardTitle className="flex items-center gap-2 text-gray-800">
+              <CardTitle className="flex items-center gap-2 text-lg font-semibold">
                 {resource.icon}
                 {resource.title}
               </CardTitle>
             </CardHeader>
             <CardContent>
-              <p className="text-gray-600 mb-4">{resource.description}</p>
-              <ul className="list-disc ml-5">
+              <p className="mb-4 text-gray-600">{resource.description}</p>
+              <ul className="space-y-2">
                 {resource.topics.map((topic, idx) => (
-                  <li key={idx}>
-                    <Link to={topic.link} className="text-blue-600 hover:underline">
+                  <li key={idx} className="flex items-center gap-2">
+                    <AlertCircle className="h-4 w-4 text-blue-500" />
+                    <Link 
+                      to={topic.link} 
+                      className="text-blue-600 hover:underline hover:text-blue-800 transition-colors"
+                    >
                       {topic.text}
                     </Link>
                   </li>

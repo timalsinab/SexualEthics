@@ -5,9 +5,9 @@ import StudentsSection from './StudentsSection';
 
 const EducationalHub = () => {
   const [selectedSection, setSelectedSection] = useState('landing');
-  
+
   const renderContent = () => {
-    switch(selectedSection) {
+    switch (selectedSection) {
       case 'educators':
         return <EducatorsSection onBack={() => setSelectedSection('landing')} />;
       case 'students':
@@ -16,19 +16,17 @@ const EducationalHub = () => {
         return <LandingPage onSelect={setSelectedSection} />;
     }
   };
-  
+
   return (
-    <div className="min-h-screen bg-slate-50">
-      <nav className="bg-white shadow-sm">
+    <div className="min-h-screen bg-gradient-to-b from-blue-50 to-gray-50">
+      <nav className="bg-white shadow-md sticky top-0 z-10">
         <div className="max-w-7xl mx-auto px-4 py-3">
           <h1 className="text-2xl font-bold text-gray-800">
             Navigating Sexual Ethics: A Resource Hub
           </h1>
         </div>
       </nav>
-      <main className="max-w-7xl mx-auto px-4 py-6">
-        {renderContent()}
-      </main>
+      <main className="max-w-7xl mx-auto px-4 py-6">{renderContent()}</main>
     </div>
   );
 };
